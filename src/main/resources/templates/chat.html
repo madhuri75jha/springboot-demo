@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Simple Chatbot</title>
+    <style>
+        body { font-family: Arial; margin: 50px; }
+        .chat-box { width: 400px; margin: auto; }
+        .response { margin-top: 20px; background: #f1f1f1; padding: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="chat-box">
+        <h2>Chatbot</h2>
+        <form method="post" th:action="@{/chat}">
+            <input type="text" name="message" placeholder="Say something..." required />
+            <button type="submit">Send</button>
+        </form>
+
+        <div class="response" th:if="${userMessage}">
+            <strong>You:</strong> <span th:text="${userMessage}"></span><br/>
+            <strong>Bot:</strong> <span th:text="${botResponse}"></span>
+        </div>
+    </div>
+</body>
+</html>
